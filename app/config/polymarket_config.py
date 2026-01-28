@@ -3,9 +3,9 @@ from py_clob_client import ClobClient
 from app.config.config import Config
 from app.infrastructure.trade.polymarket.clob_client_factory import create_clob_client
 from app.infrastructure.trade.polymarket.polymarket_trade_repository import PolymarketTradeRepository
-from app.infrastructure.wallet_balance.polymarket.rpc_wallet_balance_repository import PolygonWalletBalanceRepository
-from app.infrastructure.wallet_balance.polymarket.rpc_provider import RpcProvider
-from app.infrastructure.wallet_balance.polymarket.rpc_provider_factory import create_rpc_provider
+from app.infrastructure.wallet_balance.rpc.rpc_wallet_balance_repository import PolygonWalletBalanceRepository
+from app.infrastructure.wallet_balance.rpc.rpc_provider import RpcProvider
+from app.infrastructure.wallet_balance.rpc.rpc_provider_factory import create_rpc_provider
 
 
 class PolymarketConfig(Config):

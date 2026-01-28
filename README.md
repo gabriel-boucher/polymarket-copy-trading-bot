@@ -21,7 +21,7 @@ A Python-based copy trading bot for Polymarket that monitors and replicates trad
 1. Clone the repository:
 ```bash
 git clone https://github.com/yourusername/polymarket-copy-trading-bot.git
-cd polymarket-copy-trading-bot
+cd rpc-copy-trading-bot
 ```
 
 2. Install dependencies using uv (recommended) or pip:

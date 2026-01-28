@@ -4,7 +4,7 @@ import dotenv
 
 dotenv.load_dotenv()
 
-APP_START_TYPE: str = os.getenv("APP_START_TYPE", "in_memory")  # Options: "in_memory", "polymarket"
+APP_START_TYPE: str = os.getenv("APP_START_TYPE", "in_memory")  # Options: "in_memory", "rpc"
 
 USER_ADDRESS: str = os.getenv("USER_ADDRESS", "")
 TARGET_ADDRESS: str = os.getenv("TARGET_ADDRESS", "")

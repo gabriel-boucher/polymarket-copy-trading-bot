@@ -34,4 +34,4 @@ class TraderAppService:
         user_trade: Trade = self.__trade_factory.create_trade(target_trade, user_balance, target_balance)
         print(user_trade)
 
-        # self.__trade_repository.save_trade(user_trade)
+        self.__trade_repository.save_trade(user_trade)

@@ -1,6 +1,6 @@
 from app.config.env import INFURA_API_KEY, ALCHEMY_PRIVATE_KEY
 from app.interfaces.exceptions.no_rpc_found_exception import NoRpcFoundException
-from app.infrastructure.wallet_balance.polymarket.rpc_provider import RpcProvider
+from app.infrastructure.wallet_balance.rpc.rpc_provider import RpcProvider
 
 
 def create_rpc_provider() -> RpcProvider[float]:
