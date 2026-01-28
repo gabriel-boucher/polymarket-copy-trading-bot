@@ -3,9 +3,11 @@ from app.config.env import USER_ADDRESS, TARGET_ADDRESS, TRADE_SIZE_STRATEGY
 from app.domain.trade.trade_size_strategy.trade_size_strategy import TradeSizeStrategyType
 from app.domain.trade.trade_size_strategy.trade_size_strategy_factory import create_trade_size_strategy
 from app.domain.trade.trade_factory import TradeFactory
+from app.domain.trade.trade_validator import TradeValidator
 from app.domain.wallet_address import WalletAddress
 from app.domain.wallet_balance.wallet_balance_repository import WalletBalanceRepository
 from app.domain.trade.trade_repository import TradeRepository
+from app.domain.wallet_balance.wallet_balance_validator import WalletBalanceValidator
 from app.interfaces.trader_resource import TraderResource
 
 
@@ -26,11 +28,15 @@ class Config:
         trade_factory: TradeFactory = TradeFactory(
             trade_size_strategy=create_trade_size_strategy(self._trade_size_strategy_type)
         )
+        trade_validator: TradeValidator = TradeValidator()
+        wallet_balance_validator = WalletBalanceValidator()
 
         trader_app_service: TraderAppService = TraderAppService(
             self._trade_repository,
             self._wallet_balance_repository,
-            trade_factory
+            trade_factory,
+            trade_validator,
+            wallet_balance_validator
         )
 
         return TraderResource(

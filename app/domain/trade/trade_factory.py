@@ -15,6 +15,7 @@ class TradeFactory:
             price=target_trade.price,
             size=user_trade_size,
             side=target_trade.side,
+            wallet_address=target_trade.wallet_address,
             condition_id=target_trade.condition_id,
             outcome=target_trade.outcome,
             timestamp=target_trade.timestamp

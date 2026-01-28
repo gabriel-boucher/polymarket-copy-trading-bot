@@ -16,5 +16,8 @@ class TraderResource:
 
     def start(self) -> None:
         while True:
-            self.__trading_app_service.place_trade(self.__user_address, self.__target_address)
+            try:
+                self.__trading_app_service.place_trade(self.__user_address, self.__target_address)
+            except Exception as e:
+                print(f"Error placing trade: {e}")
             time.sleep(1)

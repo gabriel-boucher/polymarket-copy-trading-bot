@@ -6,6 +6,7 @@ class TradePolymarketDto(BaseModel):
     price: float
     size: float
     side: str
+    wallet_address: str = Field(alias="proxyWallet")
     condition_id: str = Field(alias="conditionId")
     outcome: str
     timestamp: int

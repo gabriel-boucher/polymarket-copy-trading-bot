@@ -1,6 +1,3 @@
-from app.domain.condition_id import ConditionId
-from app.domain.side_type import SideType
-from app.domain.token_id import TokenId
 from app.domain.trade.trade import Trade
 from app.domain.trade.trade_builder import build_trade
 from app.domain.trade.trade_repository import TradeRepository
