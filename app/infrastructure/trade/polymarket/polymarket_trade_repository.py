@@ -8,8 +8,8 @@ from requests import Response
 from app.domain.wallet_address import WalletAddress
 from app.domain.trade.trade import Trade
 from app.domain.trade.trade_repository import TradeRepository
-from app.infrastructure.trade.trade_polymarket_dto import TradePolymarketDto
-from app.infrastructure.trade.trade_polymarket_mapper import to_trade_polymarket_dto, to_trade_domain
+from app.infrastructure.trade.polymarket.trade_polymarket_dto import TradePolymarketDto
+from app.infrastructure.trade.polymarket.trade_polymarket_mapper import to_trade_polymarket_dto, to_trade_domain
 
 
 class PolymarketTradeRepository(TradeRepository):

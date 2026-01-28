@@ -3,7 +3,7 @@ from app.domain.token_id import TokenId
 from app.domain.trade.trade import Trade
 from app.domain.wallet_address import WalletAddress
 from app.infrastructure.side_type_polymarket_mapper import to_side_type_polymarket_dto, to_side_type_domain
-from app.infrastructure.trade.trade_polymarket_dto import TradePolymarketDto
+from app.infrastructure.trade.polymarket.trade_polymarket_dto import TradePolymarketDto
 
 
 def to_trade_polymarket_dto(trade: Trade) -> TradePolymarketDto:

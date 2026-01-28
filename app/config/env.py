@@ -12,4 +12,5 @@ TRADE_SIZE_STRATEGY: str = os.getenv("TRADE_SIZE_STRATEGY", "fixed")  # Options:
 FIXED_TRADE_SIZE: float = float(os.getenv("FIXED_TRADE_SIZE", "5.0"))
 
 INFURA_API_KEY: str = os.getenv("INFURA_API_KEY", "")
+ALCHEMY_PRIVATE_KEY: str = os.getenv("ALCHEMY_PRIVATE_KEY", "")
 USER_PRIVATE_KEY: str = os.getenv("USER_PRIVATE_KEY", "")

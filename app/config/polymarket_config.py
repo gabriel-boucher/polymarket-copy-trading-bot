@@ -1,18 +1,18 @@
 from py_clob_client import ClobClient
-from web3 import Web3
 
 from app.config.config import Config
-from app.infrastructure.clob_client_factory import create_clob_client
-from app.infrastructure.polygon_web3_factory import create_polygon_web3
-from app.infrastructure.trade.polymarket_trade_repository import PolymarketTradeRepository
-from app.infrastructure.wallet_balance.polygon_wallet_balance_repository import PolygonWalletBalanceRepository
+from app.infrastructure.trade.polymarket.clob_client_factory import create_clob_client
+from app.infrastructure.trade.polymarket.polymarket_trade_repository import PolymarketTradeRepository
+from app.infrastructure.wallet_balance.polymarket.rpc_wallet_balance_repository import PolygonWalletBalanceRepository
+from app.infrastructure.wallet_balance.polymarket.rpc_provider import RpcProvider
+from app.infrastructure.wallet_balance.polymarket.rpc_provider_factory import create_rpc_provider
 
 
 class PolymarketConfig(Config):
     def __init__(self) -> None:
         client: ClobClient = create_clob_client()
-        web3: Web3 = create_polygon_web3()
+        rpc_provider: RpcProvider[float] = create_rpc_provider()
 
         self._trade_repository = PolymarketTradeRepository(client)
-        self._wallet_balance_repository = PolygonWalletBalanceRepository(web3)
+        self._wallet_balance_repository = PolygonWalletBalanceRepository(rpc_provider)
         super().__init__()
