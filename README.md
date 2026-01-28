@@ -18,13 +18,13 @@ A Python-based copy trading bot for Polymarket that monitors and replicates trad
 
 ## Installation
 
-1. Clone the repository:
+Clone the repository:
 ```bash
-git clone https://github.com/yourusername/polymarket-copy-trading-bot.git
-cd rpc-copy-trading-bot
+git clone https://github.com/gabriel-boucher/polymarket-copy-trading-bot.git
+cd polymarket-copy-trading-bot
 ```
 
-2. Install dependencies using uv (recommended) or pip:
+Install dependencies using uv (recommended) or pip:
 ```bash
 # Using uv
 uv sync
@@ -35,16 +35,40 @@ pip install -e .
 
 ## Configuration
 
-1. Copy the example environment file:
-```bash
-cp .env.example .env
+Create a `.env` file in the root directory with the following variables:
+
+### Required Environment Variables
+
+```env
+# Application Configuration
+APP_START_TYPE=in_memory          # Options: "in_memory", "rpc"
+
+# Wallet Addresses
+USER_ADDRESS=                     # Your wallet address
+TARGET_ADDRESS=                   # Target wallet address to copy trades from
+
+# Wallet Private Key
+USER_PRIVATE_KEY=                # Your wallet private key (keep secure!)
+
+# Trade Sizing Strategy
+TRADE_SIZE_STRATEGY=fixed         # Options: "fixed", "proportional", "same_as_target"
+FIXED_TRADE_SIZE=5.0             # Fixed trade size in USDC (only used with "fixed" strategy)
+
+# RPC Configuration (required when APP_START_TYPE=rpc)
+INFURA_API_KEY=                  # Your Infura API key for Polygon RPC access
+ALCHEMY_PRIVATE_KEY=             # Your Alchemy private key (alternative to Infura)
 ```
 
-2. Edit `.env` and add your configuration:
-   - `POLYMARKET_API_KEY`: Your Polymarket API key
-   - `POLYGON_RPC_URL`: Polygon RPC endpoint
-   - `PRIVATE_KEY`: Your wallet private key (keep secure!)
-   - `TARGET_WALLET_ADDRESS`: Wallet address to copy trades from
+### Configuration Options
+
+- **APP_START_TYPE**: 
+  - `in_memory`: Uses in-memory repositories for testing
+  - `rpc`: Uses live RPC connections to Polygon network
+
+- **TRADE_SIZE_STRATEGY**:
+  - `fixed`: Always trade a fixed amount (specified by FIXED_TRADE_SIZE)
+  - `proportional`: Trade proportionally to the copied trader's balance and position
+  - `same_as_target`: Match the exact trade size of the target wallet
 
 ## Usage
 
@@ -52,50 +76,6 @@ Run the bot:
 ```bash
 python -m app.main
 ```
-
-### Trade Sizing Strategies
-
-The bot supports three trade sizing strategies:
-
-- **Fixed**: Always trade a fixed amount
-- **Proportional**: Trade proportionally to the copied trader's position
-- **Target**: Trade to match a target position size
-
-Configure in your environment or config file.
-
-## Project Structure
-
-```
-app/
-├── application/        # Application services
-├── config/            # Configuration management
-├── domain/            # Domain models and business logic
-├── infrastructure/    # External integrations (Polymarket, Polygon)
-└── interfaces/        # API/CLI interfaces
-```
-
-## Development
-
-### Type Checking
-
-```bash
-mypy app/
-```
-
-### Running Tests
-
-```bash
-pytest
-```
-
-## Security Warnings
-
-⚠️ **IMPORTANT SECURITY NOTES:**
-- Never commit your `.env` file or private keys
-- Store private keys securely
-- Use a dedicated wallet for bot trading
-- Test with small amounts first
-- Understand the risks of copy trading
 
 ## Disclaimer
 
